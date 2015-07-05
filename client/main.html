@@ -1,0 +1,26 @@
+<template name="appBody">
+  <div id="container">
+    <section id="menu">
+      <h2>linkCue</h2>
+      <div class="categories">
+        <a class="new-category"><span class="icon-plus"></span> New Category</a>
+        {{#each categories}}
+        	<div class="category-item">
+	        	<a href="{{pathFor 'showCategory'}}" class="category" title="{{name}}">
+	        		{{name}}
+	        	</a>
+	        	<a class="delete-category">
+	        		<span class="icon-trash" title="Delete category"></span>
+	        	</a>
+        	</div>
+        {{/each}}
+      </div>
+    </section>
+    <div class="content-overlay"></div>
+    <div id="content-container">
+    	{{#each thisArray}}
+    		{{> yield}}
+    	{{/each}}
+    </div>
+  </div>
+</template>
