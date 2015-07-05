@@ -1,3 +1,21 @@
 <template name="showCategory">
-	<h3>Showing {{ name }}</h3>
+	<h3>Showing {{ name }} ( {{ linkNum }} ) </h3>
+	<br>
+	<div class="add-link">
+		<form class="new-link">
+			<input type="text" placeholder="Insert link url here">
+			<span class="icon-plus"></span>
+		</form>
+	</div>
+	<div class="link-list">
+		{{#with _id }}
+			{{#each links this}}
+				{{> linkItem}}
+				{{else}}
+				<p>
+					No Url's here. Add a new Url
+				</p>
+			{{/each}}
+		{{/with}}
+	</div>
 </template>

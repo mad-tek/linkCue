@@ -10,7 +10,7 @@ Template.appBody.helpers({
 
 Template.appBody.events({
 	'click .new-category': function () {
-		var category = {name: Categories.defaultName(), incompleteCount: 0};
+		var category = {name: Categories.defaultName(), linkNum: 0};
 		category._id = Categories.insert(category);
 		console.log('inserting ' + category.name);
 	},
