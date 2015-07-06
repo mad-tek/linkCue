@@ -9,6 +9,7 @@
 - [x] edit link url
 - [ ] fetch link metadata
 - [x] link url validation
+- [x] error handling for validation
 - [ ] user authentication
 - [ ] admin authentication
 - [ ] private / public category

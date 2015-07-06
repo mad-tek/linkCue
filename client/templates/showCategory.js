@@ -1,7 +1,11 @@
 var editingKey = 'editingCategory';
 Session.setDefault(editingKey, false);
+Session.set("error", "");
 
 Template.showCategory.helpers({
+	errorMessage: function() {
+		return Session.get("error");
+	},
 	editing: function() {
 		return Session.get(editingKey);
 	},
@@ -27,6 +31,26 @@ var deleteCategory = function (category) {
 	Router.go('home');
 	return true;
 }
+var newLink = function(thisId, urlInput) {
+	var validURL = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+	if(validURL.test(urlInput.val())){
+		Links.insert({
+			categoryId: thisId,
+			url: urlInput.val(),
+			checked: false,
+			createdAt: new Date()
+		});
+		Categories.update(thisId, {$inc: {linkNum: 1}});
+		console.log('inserted ' + urlInput);
+		urlInput.val('');
+		Session.set("error", "");
+	}else{
+		Session.set("error", "Need valid url");
+		console.log('Need valid url');
+		return;
+	};
+}
+
 Template.showCategory.events({
 	'click .edit-cancel': function() {
 		Session.set(editingKey, false);
@@ -64,20 +88,6 @@ Template.showCategory.events({
 	'submit .new-link': function (event) {
 		event.preventDefault();
 		var $input = $(event.target).find('[type=text]');
-		var validURL = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
-		if(validURL.test($input.val())){
-		Links.insert({
-			categoryId: this._id,
-			url: $input.val(),
-			checked: false,
-			createdAt: new Date()
-		});
-		Categories.update(this._id, {$inc: {linkNum: 1}});
-		console.log('inserted ' + $input.val());
-		$input.val('');
-		}else{
-			console.log("Must have url");
-			return;
-		}
+		newLink(this._id, $input);
 	}
 });
