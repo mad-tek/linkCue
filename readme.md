@@ -5,9 +5,9 @@
 - [x] category select
 - [x] category name edit
 - [x] add link url
-- [ ] delete link url
-- [ ] edit link url
-- [ ]	fetch link metadata
+- [x] delete link url
+- [x] edit link url
+- [ ] fetch link metadata
 - [ ] link url validation
 - [ ] user authentication
 - [ ] admin authentication
