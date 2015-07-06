@@ -8,9 +8,11 @@
 - [x] delete link url
 - [x] edit link url
 - [ ] fetch link metadata
-- [ ] link url validation
+- [x] link url validation
 - [ ] user authentication
 - [ ] admin authentication
 - [ ] private / public category
+- [ ] private check system
 - [ ] secure database access
+- [ ] mobile
 - [ ] design

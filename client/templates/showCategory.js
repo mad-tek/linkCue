@@ -63,10 +63,9 @@ Template.showCategory.events({
 	},
 	'submit .new-link': function (event) {
 		event.preventDefault();
-
 		var $input = $(event.target).find('[type=text]');
-		if(! $input.val())
-			return;
+		var validURL = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+		if(validURL.test($input.val())){
 		Links.insert({
 			categoryId: this._id,
 			url: $input.val(),
@@ -76,5 +75,9 @@ Template.showCategory.events({
 		Categories.update(this._id, {$inc: {linkNum: 1}});
 		console.log('inserted ' + $input.val());
 		$input.val('');
+		}else{
+			console.log("Must have url");
+			return;
+		}
 	}
 });
