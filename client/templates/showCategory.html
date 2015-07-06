@@ -1,5 +1,15 @@
 <template name="showCategory">
-	<h3>Showing {{ name }} ( {{ linkNum }} ) </h3>
+	{{#if editing}}
+		<form class="edit-form">
+			<input type="text" name="name" value="{{name}}">
+			<div class="nav-group right">
+				<a href="#" class="edit-cancel"><span class="icon-close edit-cancel" title="Cancel"></span></a>
+			</div>
+		</form>
+		{{else}}
+		<h3 class="edit-category">{{ name }}</h3>
+	{{/if}}
+	<h3>( {{ linkNum }} ) </h3>
 	<br>
 	<div class="add-link">
 		<form class="new-link">

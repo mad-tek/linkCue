@@ -3,7 +3,7 @@
 - [x] add category
 - [x] delete category
 - [x] category select
-- [ ] category name edit
+- [x] category name edit
 - [x] add link url
 - [ ] delete link url
 - [ ] edit link url

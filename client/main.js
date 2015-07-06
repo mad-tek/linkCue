@@ -16,8 +16,12 @@ Template.appBody.events({
 	},
 	'click .delete-category': function () {
 		var currId = this._id
-		Categories.remove(currId);
 		console.log('deleting ' + this.name + ": " + currId);
+		Categories.find({categoryId: currId}).forEach(function(link){
+			Links.remove(link._id);
+		});
+		Categories.remove(currId);
 		Router.go('home');
+		return true;
 	}
 });
