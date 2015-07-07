@@ -11,6 +11,7 @@
 - [x] display link title, description, thumbnail
 - [x] link url validation
 - [x] error handling for validation
+- [ ] fix add link bug ("Route dispatch never rendered. Did you forget to call this.next() in an onBeforeAction?")
 - [ ] category and link delete confirmation
 - [ ] user authentication
 - [ ] admin authentication
