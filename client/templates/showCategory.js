@@ -22,7 +22,7 @@ var editingCategory = function(category, template) {
 var saveCategory = function(category, template) {
 	Session.set(editingKey, false);
 	Categories.update(category._id, {$set: {name: template.$('[name=name]').val()}});
-}
+};
 var deleteCategory = function (category) {
 	Categories.find({categoryId: category._id}).forEach(function(link){
 		Links.remove(link._id);
@@ -30,10 +30,14 @@ var deleteCategory = function (category) {
 	Categories.remove(category._id);
 	Router.go('home');
 	return true;
-}
+};
+
 var newLink = function(thisId, urlInput) {
 	var validURL = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
 	if(validURL.test(urlInput.val())){
+		Meteor.call("getUrl", urlInput.val(), function(error, result) {
+			console.log(result);
+		});
 		Links.insert({
 			categoryId: thisId,
 			url: urlInput.val(),
@@ -41,7 +45,7 @@ var newLink = function(thisId, urlInput) {
 			createdAt: new Date()
 		});
 		Categories.update(thisId, {$inc: {linkNum: 1}});
-		console.log('inserted ' + urlInput);
+		console.log('inserted ' + urlInput.val());
 		urlInput.val('');
 		Session.set("error", "");
 	}else{
@@ -49,7 +53,7 @@ var newLink = function(thisId, urlInput) {
 		console.log('Need valid url');
 		return;
 	};
-}
+};
 
 Template.showCategory.events({
 	'click .edit-cancel': function() {

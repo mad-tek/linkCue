@@ -7,7 +7,8 @@
 - [x] add link url
 - [x] delete link url
 - [x] edit link url
-- [ ] fetch link metadata
+- [x] fetch link metadata (meteor-scrape package dependency)
+- [ ] display link title, description, thumbnail
 - [x] link url validation
 - [x] error handling for validation
 - [ ] user authentication
