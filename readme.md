@@ -11,6 +11,7 @@
 - [x] display link title, description, thumbnail
 - [x] link url validation
 - [x] error handling for validation
+- [ ] category and link delete confirmation
 - [ ] user authentication
 - [ ] admin authentication
 - [ ] private / public category
