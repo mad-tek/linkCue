@@ -35,17 +35,20 @@ var deleteCategory = function (category) {
 var newLink = function(thisId, urlInput) {
 	var validURL = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
 	if(validURL.test(urlInput.val())){
-		Meteor.call("getUrl", urlInput.val(), function(error, result) {
-			console.log(result);
-		});
-		Links.insert({
-			categoryId: thisId,
-			url: urlInput.val(),
-			checked: false,
-			createdAt: new Date()
+		//before writing new link to database, scrape for title, description and favicon
+		Meteor.call('getUrl', urlInput.val(), thisId, function(error, result) {
+			Links.insert({
+				categoryId: result.categoryId,
+				url: result.originalLink,
+				title: result.title,
+				description: result.description,
+				favicon: result.favicon,
+				checked: false,
+				createdAt: new Date()
+			});
+			console.log("Inserted: " + result.title);
 		});
 		Categories.update(thisId, {$inc: {linkNum: 1}});
-		console.log('inserted ' + urlInput.val());
 		urlInput.val('');
 		Session.set("error", "");
 	}else{

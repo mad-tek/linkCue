@@ -6,9 +6,9 @@
 - [x] category name edit
 - [x] add link url
 - [x] delete link url
-- [x] edit link url
+- [x] edit link description
 - [x] fetch link metadata (meteor-scrape package dependency)
-- [ ] display link title, description, thumbnail
+- [x] display link title, description, thumbnail
 - [x] link url validation
 - [x] error handling for validation
 - [ ] user authentication

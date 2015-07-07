@@ -1,9 +1,15 @@
 <template name="linkItem">
 	<div class="link-item">
-		<label class="checkbox">
-			<input type="checkbox" checked="{{checked}}" name="checked">
-		</label>
-		<input type="text" value="{{url}}" placeholder="Url">
+		<div class="link-content">
+			<h5>
+				<label class="checkbox">
+					<input type="checkbox" checked="{{checked}}" name="checked">
+				</label>
+				{{title}}
+			</h5>
+			<p><img src="{{favicon}}" alt="" class="favicon">  <a href="{{url}}">{{url}}</a></p>
+		</div>
+		<input type="text" value="{{description}}" placeholder="Description">
 		<a href="#" class="delete-item">
 			<span class="icon-trash"></span>
 		</a>
