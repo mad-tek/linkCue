@@ -5,7 +5,13 @@ Template.linkItem.events({
 		console.log(event.target.value);
 	}, 300),
 	'mousedown .delete-item, click .delete-item': function() {
-		Links.remove(this._id);
-		Categories.update(this.categoryId, {$inc: {linkNum: -1}});
+		var message = 'Are you sure you want to remove "' + this.title + '"?';
+		if(confirm(message)){
+			Links.remove(this._id);
+			Categories.update(this.categoryId, {$inc: {linkNum: -1}});
+			return true;
+		}else{
+			return false;
+		}
 	}
 });

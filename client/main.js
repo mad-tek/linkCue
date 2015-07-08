@@ -16,12 +16,17 @@ Template.appBody.events({
 	},
 	'click .delete-category': function () {
 		var currId = this._id
-		console.log('deleting ' + this.name + ": " + currId);
-		Categories.find({categoryId: currId}).forEach(function(link){
-			Links.remove(link._id);
-		});
-		Categories.remove(currId);
-		Router.go('home');
-		return true;
+		var message = "Are you sure you want to delete " + this.name + "?";
+		if(confirm(message)){
+			console.log('deleting ' + this.name + ": " + currId);
+			Categories.find({categoryId: currId}).forEach(function(link){
+				Links.remove(link._id);
+			});
+			Categories.remove(currId);
+			Router.go('home');
+			return true;
+		}else{
+			return false;
+		}
 	}
 });

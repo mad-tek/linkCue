@@ -24,12 +24,17 @@ var saveCategory = function(category, template) {
 	Categories.update(category._id, {$set: {name: template.$('[name=name]').val()}});
 };
 var deleteCategory = function (category) {
-	Categories.find({categoryId: category._id}).forEach(function(link){
-		Links.remove(link._id);
-	});
-	Categories.remove(category._id);
-	Router.go('home');
-	return true;
+	var message = "Are you sure you want to delete " + category.name + "?";
+	if (confirm(message)){
+		Categories.find({categoryId: category._id}).forEach(function(link){
+			Links.remove(link._id);
+		});
+		Categories.remove(category._id);
+		Router.go('home');
+		return true;
+	}else{
+		return false;
+	}
 };
 
 var newLink = function(thisId, urlInput) {
@@ -46,9 +51,10 @@ var newLink = function(thisId, urlInput) {
 				checked: false,
 				createdAt: new Date()
 			});
+			Categories.update(result.categoryId, {$inc: {linkNum: 1}});
 			console.log("Inserted: " + result.title);
+			console.log("errors: " + error);
 		});
-		Categories.update(thisId, {$inc: {linkNum: 1}});
 		urlInput.val('');
 		Session.set("error", "");
 	}else{
