@@ -11,7 +11,7 @@
 - [x] display link title, description, thumbnail
 - [x] link url validation
 - [x] error handling for validation
-- [-] fix add link bug
+- [/] fix add link bug
 - [x] category and link delete confirmation
 - [x] open link in new window
 - [ ] user authentication
