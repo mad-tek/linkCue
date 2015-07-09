@@ -7,8 +7,8 @@
 meteor-platform
 autopublish
 insecure
-bootstrap
 fourseven:scss
 accounts-password
 iron:router
 anonyfox:scrape
+bootstrap

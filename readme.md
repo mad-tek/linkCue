@@ -11,13 +11,15 @@
 - [x] display link title, description, thumbnail
 - [x] link url validation
 - [x] error handling for validation
-- [/] fix add link bug
 - [x] category and link delete confirmation
 - [x] open link in new window
-- [ ] user authentication
-- [ ] admin authentication
+- [x] user join
+- [ ] user sign in
+- [ ] user UI
 - [ ] private / public category
 - [ ] private check system
 - [ ] secure database access
 - [ ] mobile
 - [ ] design
+- [ ] user management
+- [ ] depoy
