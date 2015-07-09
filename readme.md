@@ -22,4 +22,4 @@
 - [ ] mobile
 - [ ] design
 - [ ] user management
-- [ ] depoy
+- [ ] deploy
