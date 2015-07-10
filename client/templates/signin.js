@@ -43,7 +43,7 @@ Template.signin.events({
         return Session.set(ERRORS_KEY, {'none': error.reason});
       }
 
-      Router.go('home');
+      Router.go('welcome');
     });
   }
 });
