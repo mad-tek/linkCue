@@ -14,7 +14,7 @@
 - [x] category and link delete confirmation
 - [x] open link in new window
 - [x] user join
-- [ ] user sign in
+- [x] user sign in
 - [ ] user UI
 - [ ] private / public category
 - [ ] private check system

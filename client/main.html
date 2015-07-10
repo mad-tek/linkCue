@@ -2,18 +2,27 @@
   <div id="container">
     <section id="menu">
       <h2>linkCue</h2>
-      <div class="btn-group">
-        <a href="#" id="signinLink" class="btn btn-secondary">Sign In</a>
-        <a href="#" id="joinLink" class="btn btn-secondary">Join</a>
-      </div>
-      <div id="signin-popup" class="{{showSignin}}">
-        {{> signin}}
-        <a class="btn-link" id="signin-close">Cancel</a>
-      </div>
-      <div id="join-popup" class="{{showJoin}}">
-        {{> join}}
-        <a class="btn-link" id="join-close">Cancel</a>
-      </div>
+      <!-- user menu -->
+      {{#if currentUser}}
+        <div class="btn-group">
+          <a href="#" id="username" class="btn btn-secondary">{{username}}</a>
+          <a href="#" id="logout" class="btn btn-secondary">Log Out</a>
+        </div>
+      {{else}}
+        <div class="btn-group">
+          <a href="#" id="signinLink" class="btn btn-secondary">Sign In</a>
+          <a href="#" id="joinLink" class="btn btn-secondary">Join</a>
+        </div>
+        <div id="signin-popup" class="{{showSignin}}">
+          {{> signin}}
+          <a class="btn-link" id="signin-close">Cancel</a>
+        </div>
+        <div id="join-popup" class="{{showJoin}}">
+          {{> join}}
+          <a class="btn-link" id="join-close">Cancel</a>
+        </div>
+      {{/if}}
+      <!-- user menu end -->
       <div class="categories">
         <a class="new-category"><span class="icon-plus"></span> New Category</a>
         {{#each categories}}
