@@ -5,8 +5,14 @@ Template.join.onCreated(function() {
 });
 
 Template.join.helpers({
-  errorMessages: function() {
-    return _.values(Session.get(ERRORS_KEY));
+  emailError: function () {
+    return _.values(_.pick(Session.get(ERRORS_KEY), 'email'));
+  },
+  passwordError: function() {
+    return _.values(_.pick(Session.get(ERRORS_KEY), 'password'));
+  },
+  confirmError: function () {
+    return _.values(_.pick(Session.get(ERRORS_KEY), 'confirm'));
   },
   errorClass: function(key) {
     return Session.get(ERRORS_KEY)[key] && 'error';
@@ -30,7 +36,7 @@ Template.join.events({
       errors.password = 'Password required';
     }
 
-    if (confirm !== password) {
+    if (confirm !== password || ! confirm) {
       errors.confirm = 'Please confirm your password';
     }
 

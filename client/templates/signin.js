@@ -1,39 +1,49 @@
-var ERRORS_KEYS = 'joinErrors';
+var ERRORS_KEY = 'signinErrors';
 
-Template.signin.onCreated(function () {
-  Session.set(ERRORS_KEYS, {});
-})
+Template.signin.onCreated(function() {
+  Session.set(ERRORS_KEY, {});
+});
 
 Template.signin.helpers({
-  errorMessages: function(){
-     return _.values(Session.get(ERRORS_KEYS));
+  emailError: function () {
+    return _.values(_.pick(Session.get(ERRORS_KEY), 'email'));
   },
-  errorClass: function(){
-     return Session.get(ERRORS_KEYS)[key] && error;
+  passwordError: function() {
+    return _.values(_.pick(Session.get(ERRORS_KEY), 'password'));
+  },
+  errorClass: function(key) {
+    return Session.get(ERRORS_KEY)[key] && 'error';
   }
 });
 
-Template.name.events({
-  "submit": function(event, template){
-     event.preventDefault();
-     var email = template.$('[name=email]').val();
-     var password = template.$('[name=password]').val();
-     var errors = {};
-     if(!email){
-       errors.email = 'Email is required';
-     }
-     if(!password){
-       errors.password = 'Password is required';
-     }
-     Session.set(ERRORS_KEYS, errors);
-     if(_.keys(errors).length){
-       return;
-     }
-     Meteor.loginWithPassword(email, password, function(error){
-        if(error){
-          return Session.set(ERRORS_KEYS, {'none': error.reason});
-        }
-        Router.go('home');
-     });
+Template.signin.events({
+  'submit': function(event, template) {
+    event.preventDefault();
+
+    var email = template.$('[name=email]').val();
+    var password = template.$('[name=password]').val();
+
+    var errors = {};
+
+    if (! email) {
+      errors.email = 'Email is required';
+    }
+
+    if (! password) {
+      errors.password = 'Password is required';
+    }
+
+    Session.set(ERRORS_KEY, errors);
+    if (_.keys(errors).length) {
+      return;
+    }
+
+    Meteor.loginWithPassword(email, password, function(error) {
+      if (error) {
+        return Session.set(ERRORS_KEY, {'none': error.reason});
+      }
+
+      Router.go('home');
+    });
   }
 });
