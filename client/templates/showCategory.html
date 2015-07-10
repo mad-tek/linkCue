@@ -5,19 +5,28 @@
 			<a href="#" class="edit-cancel"><span class="icon-remove-circle edit-cancel" title="Cancel"></span></a>
 		</form>
 		{{else}}
-		<h3 class="edit-category">{{ name }}</h3><h3>( {{ linkNum }} ) </h3>
+		<h3 class="edit-category">{{ name }} <span class="badge">{{ linkNum }}</span> </h3>
 	{{/if}}
-	
-	<br>
-	<div class="add-link">
-		<form class="new-link">
-			<span class="icon-plus"></span>
-			<input type="text" placeholder="Insert link url here">
-			<div id="error-message">
-				{{errorMessage}}
-			</div>
-		</form>
-	</div>
+	{{#if categoryOwner}}
+		<div class="toggle-privacy">
+			<input data-toggle="toggle" data-on="Enabled" data-off="Disabled" type="checkbox">
+			{{#if private}}
+				<span class="icon-eye-close" title="Make list public"></span>
+			{{else}}
+				<span class="icon-eye-open" title="Make list private"></span>
+			{{/if}}
+		</div>
+		<br>
+		<div class="add-link">
+			<form class="new-link">
+				<span class="icon-plus"></span>
+				<input type="text" placeholder="Insert link url here">
+				<div class="error" id="error-message">
+					{{errorMessage}}
+				</div>
+			</form>
+		</div>
+	{{/if}}
 	<div class="link-list">
 		{{#with _id }}
 			{{#each links this}}

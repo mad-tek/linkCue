@@ -3,6 +3,20 @@ Session.setDefault(editingKey, false);
 Session.set("error", "");
 
 Template.showCategory.helpers({
+	categoryOwner: function () {
+		var catId = Router.current().params._id;
+		var catOwner = Categories.find({_id: catId}, {_id: 0, userId: 1}).fetch()[0].userId;
+		if(catOwner == Meteor.userId()){
+			console.log("CatOwnner and UserId is matched");
+			return true;
+		}else{
+			console.log("CatOwner and UserId not matched");
+			return false;
+		};
+	},
+	currentUserId: function () {
+		return Meteor.userId();
+	},
 	errorMessage: function() {
 		return Session.get("error");
 	},
@@ -64,6 +78,20 @@ var newLink = function(thisId, urlInput) {
 	};
 };
 
+var togglePrivacy = function (category) {
+	if(!Meteor.user()){
+		return alert("Please sign in or create an account to make private lists.")
+	}
+	if(category.private){
+		//make public by removing the user attachment to the category
+		Categories.update(category._id, {$set: {private: false}});
+		console.log("Category is now public");
+	}else{
+		Categories.update(category._id, {$set: {private: true}});
+		console.log("Category is now private");
+	}
+};
+
 Template.showCategory.events({
 	'click .edit-cancel': function() {
 		Session.set(editingKey, false);
@@ -102,5 +130,8 @@ Template.showCategory.events({
 		event.preventDefault();
 		var $input = $(event.target).find('[type=text]');
 		newLink(this._id, $input);
+	},
+	'click .toggle-privacy': function (event, template) {
+		togglePrivacy(this, template);
 	}
 });

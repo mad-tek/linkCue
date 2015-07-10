@@ -16,7 +16,11 @@
 - [x] user join
 - [x] user sign in
 - [x] user UI
-- [ ] private / public category
+- [x] private / public category
+- [ ] hide private category
+- [ ] user restrictions
+- [ ] open all category links
+- [ ] save all open tabbed links
 - [ ] private check system
 - [ ] secure database access
 - [ ] mobile

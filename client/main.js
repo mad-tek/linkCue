@@ -63,12 +63,17 @@ Template.appBody.events({
 	'click #logout': function (event) {
 		event.preventDefault();
 		Meteor.logout();
-		Router.go('home');
+		Router.go('showCategory', Categories.findOne({private: false}));
 	},
 	'click .new-category': function () {
-		var category = {name: Categories.defaultName(), linkNum: 0};
+		var category = {
+			name: Categories.defaultName(),
+			linkNum: 0,
+			userId: Meteor.userId(),
+			private: true
+		};
 		category._id = Categories.insert(category);
-		console.log('inserting ' + category.name);
+		console.log('inserting ' + category.name + '. By ' + Meteor.userId() + ': ' + Meteor.user().username);
 	},
 	'click .delete-category': function () {
 		var currId = this._id
