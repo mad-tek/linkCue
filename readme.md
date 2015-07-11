@@ -18,6 +18,7 @@
 - [x] user UI
 - [x] private / public category
 - [ ] hide private category
+- [ ] public and private category tabs
 - [ ] user restrictions
 - [ ] open all category links
 - [ ] save all open tabbed links

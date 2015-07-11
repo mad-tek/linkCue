@@ -24,12 +24,13 @@
       {{/if}}
       <!-- user menu end -->
       <div class="categories">
-        <a class="new-category"><span class="icon-plus"></span> New Category</a>
+        {{#if currentUser}}
+          <a class="new-category"><span class="icon-plus"></span> New Category</a>
+        {{/if}}
         {{#each categories}}
         	<div class="category-item">
 	        	<a href="{{pathFor 'showCategory'}}" class="category" title="{{name}}">
-	        		{{name}} ({{linkNum}})
-	        	</a>
+              <span class="badge">{{linkNum}}</span> {{name}}</a>
 	        	<a class="delete-category">
 	        		<span class="icon-trash" title="Delete category"></span>
 	        	</a>
