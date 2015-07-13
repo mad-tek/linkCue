@@ -17,13 +17,12 @@
 - [x] user sign in
 - [x] user UI
 - [x] private / public category
-- [ ] hide private category
+- [x] hide private category
 - [ ] public and private category tabs
-- [ ] user restrictions
+- [x] user restrictions
 - [ ] open all category links
-- [ ] save all open tabbed links
-- [ ] private check system
-- [ ] secure database access
+- [x] private check filter
+- [x] secure database access
 - [ ] mobile
 - [ ] design
 - [ ] user management

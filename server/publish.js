@@ -3,10 +3,9 @@ Meteor.publish('publicCategories', function(argument){
 });
 
 Meteor.publish('privateCategories', function(){
-  return Categories.filter({userId: this.userId});
+  return Categories.find({userId: this.userId});
 });
 
 Meteor.publish('links', function(categoryId){
-  check(categoryId, String);
-  return Links.find({listId: listId});
+  return Links.find({categoryId: categoryId});
 });
