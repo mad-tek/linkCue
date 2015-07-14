@@ -29,8 +29,11 @@ Template.appBody.helpers({
 		console.log(this);
 		return [this];
 	},
-	categories: function () {
-		return Categories.find();
+	publicCategories: function () {
+		return Categories.find({private: false});
+	},
+	privateCategories: function () {
+		return Categories.find({private: true});
 	}
 });
 

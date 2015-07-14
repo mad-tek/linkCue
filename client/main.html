@@ -27,15 +27,39 @@
         {{#if currentUser}}
           <a class="new-category"><span class="icon-plus"></span> New Category</a>
         {{/if}}
-        {{#each categories}}
-        	<div class="category-item">
-	        	<a href="{{pathFor 'showCategory'}}" class="category" title="{{name}}">
-              <span class="badge">{{linkNum}}</span> {{name}}</a>
-	        	<a class="delete-category">
-	        		<span class="icon-trash" title="Delete category"></span>
-	        	</a>
-        	</div>
-        {{/each}}
+        <!-- public and private tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="active" role="presentation"><a href="#public" aria-controls="public" role="tab" data-toggle="tab">Public</a></li>
+          <li role="presentation"><a href="#private" aria-controls="private" role="tab" data-toggle="tab">Private</a></li>
+        </ul>
+        <div class="tab-content">
+          <!-- public categories -->
+          <div class="tab-pane active" id="public" role="tabpanel">
+            {{#each publicCategories}}
+            	<div class="category-item">
+    	        	<a href="{{pathFor 'showCategory'}}" class="category" title="{{name}}">
+                  <span class="badge">{{linkNum}}</span> {{name}}</a>
+    	        	<a class="delete-category">
+    	        		<span class="icon-trash" title="Delete category"></span>
+    	        	</a>
+            	</div>
+            {{/each}}
+          </div>
+          <!-- private categories -->
+          <div class="tab-pane" id="private" role="tabpanel">
+            {{#each privateCategories}}
+            	<div class="category-item">
+    	        	<a href="{{pathFor 'showCategory'}}" class="category" title="{{name}}">
+                  <span class="badge">{{linkNum}}</span> {{name}}</a>
+    	        	<a class="delete-category">
+    	        		<span class="icon-trash" title="Delete category"></span>
+    	        	</a>
+            	</div>
+            {{/each}}
+          </div>
+        </div>
+
+
       </div>
     </section>
     <div class="content-overlay"></div>

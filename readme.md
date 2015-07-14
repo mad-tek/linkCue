@@ -18,7 +18,7 @@
 - [x] user UI
 - [x] private / public category
 - [x] hide private category
-- [ ] public and private category tabs
+- [x] public and private category tabs
 - [x] user restrictions
 - [ ] open all category links
 - [x] private check filter
