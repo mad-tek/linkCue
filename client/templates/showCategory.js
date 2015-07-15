@@ -27,7 +27,6 @@ Template.showCategory.helpers({
 		return Links.find({categoryId: categoryId}, {sort: {createdAt : -1}});
 	}
 });
-
 var editingCategory = function(category, template) {
 	Session.set(editingKey, true);
 	Tracker.flush();
@@ -93,6 +92,10 @@ var togglePrivacy = function (category) {
 };
 
 Template.showCategory.events({
+	'click #openAll': function () {
+		console.log(linkArray);
+		window.open('http://www.google.com', '_blank');
+	},
 	'click .edit-cancel': function() {
 		Session.set(editingKey, false);
 	},

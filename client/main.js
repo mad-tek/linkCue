@@ -76,7 +76,8 @@ Template.appBody.events({
 			private: true
 		};
 		category._id = Categories.insert(category);
-		console.log('inserting ' + category.name + '. By ' + Meteor.userId() + ': ' + Meteor.user().username);
+		console.log('inserting ' + category.name + ' ' + category._id + '. By ' + Meteor.userId() + ': ' + Meteor.user().username);
+		Router.go('showCategory', {_id: category._id});
 	},
 	'click .delete-category': function () {
 		var currId = this._id

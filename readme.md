@@ -25,5 +25,5 @@
 - [x] secure database access
 - [ ] mobile
 - [ ] design
-- [ ] user management
+- [ ] user management gui
 - [ ] deploy
