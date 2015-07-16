@@ -90,11 +90,14 @@ var togglePrivacy = function (category) {
 		console.log("Category is now private");
 	}
 };
-
 Template.showCategory.events({
 	'click #openAll': function () {
-		console.log(linkArray);
-		window.open('http://www.google.com', '_blank');
+		var categoryId = this._id;
+		var linkArray = Links.find({categoryId: categoryId}, {fields: { _id: 0, url: 1 }}).fetch('url');
+		linkArray.forEach(function (link) {
+			console.log('Opening link: '+ link.url);
+			window.open(link.url, '_blank');
+		});
 	},
 	'click .edit-cancel': function() {
 		Session.set(editingKey, false);

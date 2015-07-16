@@ -31,7 +31,7 @@ $window-padding: 5.6%;
 #content-container {
 	@include position(absolute, 0, 0, 0, $menu-width, auto, auto);
 	@media screen and (min-width: 40em) {
-		left: $menu-width;
+		left: $menu-width+20;
 	}
 }
 .error {
