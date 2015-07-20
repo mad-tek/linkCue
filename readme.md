@@ -23,7 +23,7 @@
 - [x] open all category links
 - [x] private check filter
 - [x] secure database access
-- [ ] change tab category when adding new category
+- [x] change tab category when adding new category
 - [ ] mobile
 - [ ] design
 - [ ] user management gui
