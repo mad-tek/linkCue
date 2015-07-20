@@ -76,7 +76,14 @@ Template.appBody.events({
 			private: true
 		};
 		category._id = Categories.insert(category);
-		console.log('inserting ' + category.name + ' ' + category._id + '. By ' + Meteor.userId() + ': ' + Meteor.user().username);
+		if ($('#publicTab').attr('class') == 'active') {
+			console.log('Publictab is active');
+			$('#publicTab').removeClass('active');
+			$('#privateTab').toggleClass('active');
+			$('#public').removeClass('active');
+			$('#private').toggleClass('active');
+		};
+		console.log('Made category: ' + category.name + ' ' + category._id + '. By ' + Meteor.userId() + ': ' + Meteor.user().username);
 		Router.go('showCategory', {_id: category._id});
 	},
 	'click .delete-category': function () {
