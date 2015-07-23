@@ -26,5 +26,6 @@
 - [x] change tab category when adding new category
 - [ ] mobile
 - [ ] design
+- [ ] list all users
 - [ ] user management gui
 - [ ] deploy

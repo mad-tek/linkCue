@@ -6,6 +6,6 @@ if (Meteor.isServer) {
 			result.originalLink = link;
 			result.categoryId = categoryId;
 			return result;
-		},
+		}
 	});
 }

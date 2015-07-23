@@ -1,9 +1,9 @@
-Deps.autorun(function() {
-  Meteor.subscribe('Users')
+Meteor.subscribe('users', function() {
+  console.log(Users.find().fetch());
 });
 
 Template.users.helpers({
   users: function(){
-    return Users.find();
+    return Users.find().fetch();
   }
 });
