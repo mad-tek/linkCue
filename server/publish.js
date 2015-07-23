@@ -9,3 +9,7 @@ Meteor.publish('privateCategories', function(){
 Meteor.publish('links', function(categoryId){
   return Links.find({categoryId: categoryId});
 });
+
+Meteor.publish("users", function(){
+  return Users.find();
+});

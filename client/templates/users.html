@@ -1,0 +1,15 @@
+<template name="users">
+	<h1>Users!</h1>
+  {{#each users}}
+  <div class="link-item">
+		<div class="link-content">
+			<h5>
+				{{username}}
+			</h5>
+		</div>
+		<a href="#" class="delete-item">
+			<span class="icon-trash"></span>
+		</a>
+	</div>
+  {{/each}}
+</template>
