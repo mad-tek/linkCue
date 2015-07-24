@@ -1,16 +1,28 @@
 <template name="users">
 	<h1>Users!</h1>
-  {{#each users}}
-  <div class="link-item">
-		<div class="link-content">
-			<h5>
-				{{username}}
-				<a href="#" class="delete-item">
-					<span class="icon-trash"></span>
-				</a>
-			</h5>
-      <p></p>
-		</div>
-	</div>
-  {{/each}}
+	<h3>{{numOfUsers}} users registered</h3>
+	<table>
+		<tr>
+			<td>
+				<h4>- Name -</h4>
+			</td>
+			<td>
+				<h4>- Delete -</h4>
+			</td>
+		</tr>
+  	{{#each users}}
+			<tr>
+				<td>
+					<h5>
+						{{username}}
+					</h5>
+				</td>
+				<td style='text-align: right;'>
+					<a href="#" class="delete-user" style='cursor: pointer'>
+						<span class="icon-trash"></span>
+					</a>
+				</td>
+			</tr>
+		{{/each}}
+	</table>
 </template>
